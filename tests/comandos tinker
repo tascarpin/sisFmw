@@ -1,0 +1,18 @@
+$this->get('/test-conn', function () {
+    // Insere um novo usuário ao banco de dados:
+    $user = \App\User::create([
+        'name'         => 'Tassio Pinheiro',
+        'email'     => 'tascarpin@yahoo.com.br',
+        'password'     => bcrypt('123456'),
+    ]);
+    // Se quiser exibir os dados do usuário: dd($user);
+
+    // Listando os usuários
+    $users = \App\User::get();
+
+    echo '<hr>';
+    foreach ($users as $user) {
+        echo "{$user->name} <br>";
+    }
+    echo '<hr>';
+});
